@@ -1,1 +1,30 @@
-- move configuration away from the script itself
+TODO list
+
+1) Three wishlist bugs to modify the config system
+My original plan was a vaguely worded goal to "move configuration away from the
+script itself".  Here are some more details.
+The three wishlist bugs are:
+235385 which contains some sample code for command line options which are more
+"unix-like"
+253554 requests I use the /etc/default system to contain "defaults" for various
+internal functions.
+253790 requests I use the HTB instead of the CBQ. That should be a configurable
+option.
+What I plan to do is combine all three bugs into one coherent plan that balances
+the trend of adding complications and features with the goal of making the
+wondershaper a very basic entry level simple to config system.
+What I want is something that can be run completely off the command line
+but can also support config files in /etc/default, while supporting the 
+additional configurable options that have been requested.
+Finally, when I determine a new config method I need to have some way to support
+current users with a backwards compatible config method.
+
+2) Research the HTB vs CBQ in the following areas:
+Compare benchmark tests and subjective tests of HTB and CBQ
+Compare kernel compatibility of HTB and CBQ and produce some kind of statement
+or table explaining which kernel versions support each queue and which Debian
+kernel packages support each queue.
+Given research, decide if and how to integrate HTB support into the wondershaper.
+I need to do more research before determining if this whole HTB CBQ issue 
+might be "too complicated" for a simple entry level script like the 
+wondershaper.

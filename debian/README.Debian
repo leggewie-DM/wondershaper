@@ -1,0 +1,177 @@
+How to set up the wondershaper on a Debian system
+
+Outline:
+
+STEP 0 Read this entire document before continuing, also, prerequisites
+STEP 1 Gather data
+STEP 2 Pre-test
+STEP 3 Enable the wondershaper
+STEP 4 Post-test
+STEP 5 Controling the wondershaper
+STEP 6 Permanent setup
+STEP 7 Monitoring the wondershaper
+STEP 8 Send email to vlm@debian.org
+
+STEP 0 Read this entire document before continuing
+
+Installing the wondershaper requires a short list of entry level admin
+skills as listed below:
+Root access.
+Basic file manipulation commands (mv, cp, etc)
+Able to edit text config files (vi, joe, emacs, etc)
+Able to test upload and download speeds (perhaps ftp, wget, etc)
+
+The standard Debian 2.6 kernels work with no modifications or 
+recompilations required.  If you compiled your own kernel, you may
+need to include various optional modules and drivers.
+If your kernel does not include the required modules, you will get
+errors such as:
+"RTNETLINK answers: Invalid argument"
+
+STEP 1 Gather data
+
+Determine your upstream address, perhaps by running route -n as root
+
+root@firewall:~# route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         1.2.3.4         0.0.0.0         UG    0      0        0 eth1
+
+in this example, your upstream address is 1.2.3.4 
+
+Figure out your REAL download and upload speeds.
+If you have an honest ISP, you can use the specified values that
+you ordered with the circuit.
+Otherwise, do some uploads and downloads to measure your speeds.
+Note you need to measure this in KILOBITS per SECOND not megabytes
+or whatever.
+
+STEP 2 Pre-test
+
+Start a large full line rate download, perhaps an "apt-get update"
+
+At the same time, ping your upstream serial port, in this 
+example 1.2.3.4.  My results on my DSL line are listed below:
+
+20 packets transmitted, 20 received, 0% packet loss, time 19022ms
+rtt min/avg/max/mdev = 73.251/249.207/372.279/80.579 ms
+
+The point of the wondershaper is to reduce the average and peak rtt
+
+Try to ssh or telnet to something out on the net.  Notice the high
+latency as seen by "jerkiness" when typing and scrolling, etc.
+
+Write down your test results or cut and paste them somewhere so that
+you can compare your Post-test with your Pre-test results.
+
+STEP 3 Enable the wondershaper
+
+In this example, your ISP connects to eth1, and you've got
+a downlink speed of 500 K and an uplink speed of 100K.
+
+As root, execute the following command:
+
+wondershaper eth1 500 100
+
+STEP 4 Post-test
+
+Do the same test you did in the pre-test.
+Here are the results I got on my DSL line:
+
+20 packets transmitted, 20 received, 0% packet loss, time 19019ms
+rtt min/avg/max/mdev = 24.773/84.195/201.361/36.426 ms
+
+Now ssh or telnet to something out on the net and see if there is less
+latency.
+
+Now, compare your testing results.  In my test example:
+My best case ping time dropped from 73 ms to 24 ms, a 67% improvement
+My average ping time dropped from 249 ms to 84 ms, a 66% improvement
+My worst case ping time dropped from 372 ms to 201 ms a 45% improvement
+
+So, on my firewall, my measured latencies while under load generally 
+dropped by "about" 50%.
+
+That's a pretty big improvement for a 175 line script and 30 minutes 
+of installation time!
+
+STEP 5 Controlling the wondershaper
+
+Assuming your ISP is connected to eth0, you can examine your traffic
+shaping stats by running "wondershaper eth0" as root.
+
+Assuming your ISP is connected to eth0, you can remove all traffic
+shaping from eth0 by running "wondershaper clear eth0" as root.
+Note that the wondershaper doesn't care what the first word is,
+you could just as well enter "wondershaper delete eth0" or whatever
+word works for you.
+
+You should probably do several cycles of enabling, testing, and 
+deleting, using various combinations of uplink and downlink speeds
+to determine the configuration with the best overall performance.
+
+I have found the best strategy to use is to configure the wondershaper
+to relatively low values and work your way upwards until the latency
+suffers too much, then drop back to the best "reasonable" value.
+
+STEP 6 Permanent setup
+
+It is relatively easy to permanently install the wondershaper on your
+system.
+
+In this example, we will assume your ISP is connected to eth1, and you 
+get your best performance with a downlink speed of 500K and an upload
+speed of 100K.
+
+The first step is to save a copy of your current /etc/network/interfaces
+file into the root directory just in case you totally screw up the file
+while installing the wondershaper.  As root run:
+cp /etc/network/interfaces /root/backup.interfaces
+
+Now if you totally screw up, or want a very simple way to get rid of
+the wondershaper, as root, run the following command:
+cp /root/backup.interfaces /etc/network/interfaces
+
+Before installing the wondershaper, your file /etc/network/interfaces
+probably looks something like this:
+
+auto eth1
+iface eth1 inet dhcp
+
+After logging in as root and editing that file to install the 
+wondershaper, that same paragraph will look like this:
+
+auto eth1
+iface eth1 inet dhcp
+    up /sbin/wondershaper eth1 500 100
+    down /sbin/wondershaper remove eth1
+
+After your final edit, you may wish to ifdown eth1 and then ifup eth1 
+while logged in as root.  This is recommended as a first test step,
+because if you totally screw up the file you will easily be able to 
+copy the saved file on top of it, or perhaps
+
+Most people think its a good idea once you think you are done, to 
+reboot and make sure everything boots up "OK".  It's better to find out
+something won't boot up under controlled conditions when you expect it, 
+rather than at 2am months after you made the change.  However, there is 
+no "need" to reboot the computer merely to make the wondershaper work.
+
+If you ever decide to remove the wondershaper package from your debian
+system, remember that you will need to delete the lines you added to 
+the interfaces file, either manually or by using the backup file you made.
+
+STEP 7 Monitoring the wondershaper
+
+Assuming your ISP is connected to eth0, you can examine your traffic
+shaping stats by running "wondershaper eth0" as root.
+
+STEP 8 Send email to vlm@debian.org
+
+The last step is optional.
+Please send an email to vlm@debian.org, including your before and 
+after test results, and let him know of any problems with the 
+installation and operation of the wondershaper, and any improvements
+you would suggest for this document.
+
+ -- Vince Mulhollon <vlm@debian.org> 30 May 2004

@@ -1,0 +1,31 @@
+Source: wondershaper
+Section: net
+Priority: extra
+Maintainer: Vince Mulhollon <vlm@debian.org>
+Build-Depends: debhelper (>= 4.0.0)
+Standards-Version: 3.6.1.0
+
+Package: wondershaper
+Architecture: all
+Depends: iproute
+Description: Easy to use traffic shaping script
+ An easy to use traffic shaping script that provides these improvements:
+  * Low latency for interactive traffic (and pings) at all times
+  * Allow websurfing at reasonable speeds while uploading / downloading
+  * Make sure uploads don't hurt downloads
+  * Make sure downloads don't hurt uploads
+ .
+ It does this by:
+  * Limiting upload speed slightly, to eliminate queues
+  * Limiting download speed, while allowing bursts, to eliminate queues
+  * Interactive traffic skips the queue
+  * ACKs and tiny packets skip the queue
+ .
+ Configuring the wondershaper requires you to accurately and precisely 
+ determine your consistent upload and download speeds.
+ .
+ The wondershaper is the simplest, easiest to use, entry level, traffic
+ shaping script provided by Debian.
+ .
+ After installing this package, read highly the detailed instructions:
+ /usr/share/doc/wondershaper/README.Debian

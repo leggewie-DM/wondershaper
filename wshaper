@@ -1,17 +1,45 @@
-#!/bin/bash 
+#!/bin/sh 
 
 # Wonder Shaper
+
+# Modifications by Vince Mulhollon for debian package
+
+if [ $# == 0 ]; then
+  echo Please read the man page for the wondershaper and 
+  echo the file /usr/share/doc/wondershaper/README.Debian
+  exit
+fi
+
+if [ $# == 1 ]; then
+  tc -s qdisc ls dev $1
+  tc -s class ls dev $1
+  exit
+fi
+
+if [ $# == 2 ]; then
+  tc qdisc del dev $2 root    2> /dev/null > /dev/null
+  tc qdisc del dev $2 ingress 2> /dev/null > /dev/null
+  echo Wondershaper queues have been cleared.
+  exit
+fi
+
+if [ $# != 3 ]; then
+  echo Please read the man page for the wondershaper and
+  echo the file /usr/share/doc/wondershaper/README.Debian
+  exit
+fi
+
 # please read the README before filling out these values 
 #
 # Set the following values to somewhat less than your actual download
 # and uplink speed. In kilobits. Also set the device that is to be shaped.
-DOWNLINK=800
-UPLINK=220
-DEV=eth0
+DOWNLINK=$2
+UPLINK=$3
+DEV=$1
 
 # low priority OUTGOING traffic - you can leave this blank if you want
 # low priority source netmasks
-NOPRIOHOSTSRC=80
+NOPRIOHOSTSRC=
 
 # low priority destination netmasks
 NOPRIOHOSTDST=
@@ -24,27 +52,27 @@ NOPRIOPORTDST=
 
 # Now remove the following two lines :-)
 
-echo Please read the documentation in 'README' first :-\)
-exit
+#echo Please read the documentation in 'README' first :-\)
+#exit
 
 #########################################################
 
-if [ "$1" = "status" ]
-then
-	tc -s qdisc ls dev $DEV
-	tc -s class ls dev $DEV
-	exit
-fi
+#if [ "$1" = "status" ]
+#then
+#	tc -s qdisc ls dev $DEV
+#	tc -s class ls dev $DEV
+#	exit
+#fi
 
 
 # clean existing down- and uplink qdiscs, hide errors
 tc qdisc del dev $DEV root    2> /dev/null > /dev/null
 tc qdisc del dev $DEV ingress 2> /dev/null > /dev/null
 
-if [ "$1" = "stop" ] 
-then 
-	exit
-fi
+#if [ "$1" = "stop" ] 
+#then 
+#	exit
+#fi
 
 ###### uplink
 
@@ -67,12 +95,12 @@ tc class add dev $DEV parent 1:1 classid 1:10 cbq rate ${UPLINK}kbit \
 # bulk and default class 1:20 - gets slightly less traffic, 
 #  and a lower priority:
 
-tc class add dev $DEV parent 1:1 classid 1:20 cbq rate $[9*$UPLINK/10]kbit \
+tc class add dev $DEV parent 1:1 classid 1:20 cbq rate $((9*$UPLINK/10))kbit \
    allot 1600 prio 2 avpkt 1000
 
 # 'traffic we hate'
 
-tc class add dev $DEV parent 1:1 classid 1:30 cbq rate $[8*$UPLINK/10]kbit \
+tc class add dev $DEV parent 1:1 classid 1:30 cbq rate $((8*$UPLINK/10))kbit \
    allot 1600 prio 2 avpkt 1000
 
 # all get Stochastic Fairness:
@@ -89,6 +117,14 @@ tc filter add dev $DEV parent 1:0 protocol ip prio 10 u32 \
 # can do measurements & impress our friends:
 tc filter add dev $DEV parent 1:0 protocol ip prio 11 u32 \
         match ip protocol 1 0xff flowid 1:10
+
+# pablo.iranzo@uv.es provided a patch for the MLDonkey system
+# The MLDonkey uses small UDP packets for source propogation
+# which floods the wondershaper out.
+tc filter add dev $DEV parent 1:0 protocol ip prio 10 u32 \
+   match ip protocol 17 0xff \
+   match ip sport 4666 0xffff \
+   flowid 1:30 
 
 # prioritize small packets (<64 bytes)
 

@@ -1,0 +1,68 @@
+.\"                                      Hey, EMACS: -*- nroff -*-
+.\" First parameter, NAME, should be all caps
+.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
+.\" other parameters are allowed: see man(7), man(1)
+.TH WONDERSHAPER 8 "May  30, 2004"
+.\" Please adjust this date whenever revising the manpage.
+.\"
+.\" Some roff macros, for reference:
+.\" .nh        disable hyphenation
+.\" .hy        enable hyphenation
+.\" .ad l      left justify
+.\" .ad b      justify to both left and right margins
+.\" .nf        disable filling
+.\" .fi        enable filling
+.\" .br        insert line break
+.\" .sp <n>    insert n+1 empty lines
+.\" for manpage-specific macros, see man(7)
+.SH NAME
+wondershaper \- simple traffic shaping script
+.SH SYNOPSIS
+.B wondershaper 
+.RI [ interface ] 
+.br
+.B wondershaper
+clear
+.RI [ interface ]
+.br
+.B wondershaper
+.RI [ interface ]
+.RI [ downlink ]
+.RI [ uplink ]
+.SH DESCRIPTION
+This manual page documents briefly the
+.B wondershaper
+script.
+This manual page was written for the Debian distribution
+because the original script does not have a manual page.
+.PP
+\fBwondershaper\fP is a traffic shaping script that provides 
+low latency, prioritizes bulk transfers below normal web traffic, 
+prioritizes interactive shells above normal web traffic, 
+and attempts to prevent upload and download traffic from affecting 
+each other's ack packets.  Put simply, the wondershaper 
+makes your internet connection more "responsive"
+.SH SYNTAX
+A summary of wondershaper syntax is included below.
+For a complete description, see the files in /usr/share/doc/wondershaper.
+.TP
+.B wondershaper [ interface ]
+Shows the status of traffic shaping on that interface.
+.TP
+.B wondershaper clear [ interface ]
+Removes all traffic shaping from that interface. 
+.TP
+.B wondershaper [ interface ] [ downlink ] [ uplink ]
+Configures the wondershaper on the specified interface, given the 
+specified downlink speed in kilobits per second, and the specified 
+uplink speed in kilobits per second.
+.SH SEE ALSO
+.br
+The programs are documented fully by:
+.PP
+/usr/share/doc/wondershaper/README.Debian
+.PP
+/usr/share/doc/wondershaper/README.gz
+.SH AUTHOR
+This manual page was written by Vince Mulhollon <vlm@debian.org>,
+for the Debian project (but may be used by others).
