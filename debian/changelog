@@ -1,3 +1,17 @@
+wondershaper (1.1a-4.1) unstable; urgency=low
+
+  * Non-maintainer upload to make the package Policy compliant.
+  * Changed wshaper binary from /sbin to /usr/sbin. Thanks to Bernd
+    Zeimetz for the patch. Added NEWS.Debian about the change.
+    (Closes: #439142)
+  * Removed /usr/bin from the debian/dirs file, as it was unneeded.
+  * Fixed bashisms in wshaper binary.  Thanks to Maximilian Attems for
+    the patch.  (Closes: #292123, #271512)
+  * Fixed the pointers to the docs to say README.Debian.gz instead of
+    README.Debian.  (Closes: #286052)
+
+ -- Margarita Manterola <marga@debian.org>  Thu, 30 Aug 2007 13:36:09 -0300
+
 wondershaper (1.1a-4) unstable; urgency=low
 
   * Patched to remove the bash-isms, works with bash and dash 

@@ -4,28 +4,28 @@
 
 # Modifications by Vince Mulhollon for debian package
 
-if [ $# == 0 ]; then
+if [ $# -eq 0 ]; then
   echo Please read the man page for the wondershaper and 
-  echo the file /usr/share/doc/wondershaper/README.Debian
+  echo the file /usr/share/doc/wondershaper/README.Debian.gz
   exit
 fi
 
-if [ $# == 1 ]; then
+if [ $# -eq 1 ]; then
   tc -s qdisc ls dev $1
   tc -s class ls dev $1
   exit
 fi
 
-if [ $# == 2 ]; then
+if [ $# -eq 2 ]; then
   tc qdisc del dev $2 root    2> /dev/null > /dev/null
   tc qdisc del dev $2 ingress 2> /dev/null > /dev/null
   echo Wondershaper queues have been cleared.
   exit
 fi
 
-if [ $# != 3 ]; then
+if [ $# -ne 3 ]; then
   echo Please read the man page for the wondershaper and
-  echo the file /usr/share/doc/wondershaper/README.Debian
+  echo the file /usr/share/doc/wondershaper/README.Debian.gz
   exit
 fi
 

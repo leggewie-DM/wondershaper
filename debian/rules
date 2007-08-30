@@ -57,8 +57,7 @@ install: build
 
 	# Add here commands to install the package into debian/wondershaper.
 	#$(MAKE) install DESTDIR=$(CURDIR)/debian/wondershaper
-	mkdir $(CURDIR)/debian/wondershaper/sbin
-	cp wshaper $(CURDIR)/debian/wondershaper/sbin/wondershaper
+	cp wshaper $(CURDIR)/debian/wondershaper/usr/sbin/wondershaper
 
 
 # Build architecture-independent files here.
