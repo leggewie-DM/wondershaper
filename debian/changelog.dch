@@ -2,8 +2,11 @@ wondershaper (1.1a-5) unstable; urgency=low
 
   * Update to Standards 3.8.0 and make the package lintian clean.
   * adjust path to script in README. (Closes: #463486)
+    Patch courtesy of Eric Mountain
+  * remove bashims. (Closes: #504640)
+    Patch courtesy of John Eikenberry
 
- -- Rolf Leggewie <foss@rolf.leggewie.biz>  Fri, 13 Feb 2009 19:40:14 +0100
+ -- Rolf Leggewie <foss@rolf.leggewie.biz>  Sat, 14 Feb 2009 19:31:29 +0100
 
 wondershaper (1.1a-4.1) unstable; urgency=low
 

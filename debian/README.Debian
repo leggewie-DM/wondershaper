@@ -143,8 +143,8 @@ wondershaper, that same paragraph will look like this:
 
 auto eth1
 iface eth1 inet dhcp
-    up /sbin/wondershaper eth1 500 100
-    down /sbin/wondershaper remove eth1
+    up /usr/sbin/wondershaper eth1 500 100
+    down /usr/sbin/wondershaper remove eth1
 
 After your final edit, you may wish to ifdown eth1 and then ifup eth1 
 while logged in as root.  This is recommended as a first test step,
