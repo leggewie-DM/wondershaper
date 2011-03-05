@@ -27,6 +27,9 @@ need to include various optional modules and drivers.
 If your kernel does not include the required modules, you will get
 errors such as:
 "RTNETLINK answers: Invalid argument"
+At least one cause of RTNETLINK errors is a kernel compiled without
+the CONFIG_NET_ACT_POLICE option.  With the notable exception of 
+Debian bug 395882, Debian provided kernels do work...
 
 STEP 1 Gather data
 
@@ -95,6 +98,11 @@ dropped by "about" 50%.
 That's a pretty big improvement for a 175 line script and 30 minutes 
 of installation time!
 
+Its worth trying other values to optimize the results.  Roughly one in
+thirty people will benefit from somewhat different values, see Debian
+bug number 592579 for an example.  Several tests and some graph
+paper will indicate the ideal setpoints.
+
 STEP 5 Controlling the wondershaper
 
 Assuming your ISP is connected to eth0, you can examine your traffic
@@ -143,8 +151,8 @@ wondershaper, that same paragraph will look like this:
 
 auto eth1
 iface eth1 inet dhcp
-    up /usr/sbin/wondershaper eth1 500 100
-    down /usr/sbin/wondershaper remove eth1
+    up /sbin/wondershaper eth1 500 100
+    down /sbin/wondershaper remove eth1
 
 After your final edit, you may wish to ifdown eth1 and then ifup eth1 
 while logged in as root.  This is recommended as a first test step,
@@ -174,4 +182,3 @@ after test results, and let him know of any problems with the
 installation and operation of the wondershaper, and any improvements
 you would suggest for this document.
 
- -- Vince Mulhollon <vlm@debian.org> 30 May 2004

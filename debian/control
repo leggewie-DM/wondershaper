@@ -4,12 +4,12 @@ Priority: extra
 Homepage: http://lartc.org/wondershaper/
 Maintainer: Vince Mulhollon <vlm@debian.org>
 Uploaders: Rolf Leggewie <foss@rolf.leggewie.biz>
-Build-Depends: debhelper (>= 4.0.0)
-Standards-Version: 3.8.0
+Build-Depends: debhelper (>= 8)
+Standards-Version: 3.9.1.0
 
 Package: wondershaper
 Architecture: all
-Depends: iproute
+Depends: iproute,${misc:Depends}
 Description: Easy to use traffic shaping script
  An easy to use traffic shaping script that provides these improvements:
   * Low latency for interactive traffic (and pings) at all times

@@ -9,7 +9,13 @@ Copyright:
 
 GNU GPL v2 as described in /usr/share/common-licenses/GPL-2
 
-Also see
-http://lartc.org/wondershaper/
-which states:
-"Licensed under the GPL"
+A direct cut and paste from the website http://lartc.org/wondershaper/
+
+bert hubert <ahu@ds9a.nl>
+© Copyright 2002
+Licensed under the GPL
+
+To make lintian happy I can reorder:
+
+Copyright 2002 Bert Hubert <ahu@ds9a.nl>
+

@@ -6,9 +6,6 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-
-
-
 CFLAGS = -Wall -g
 
 ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
@@ -52,12 +49,12 @@ clean:
 install: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k 
+	dh_prep 
 	dh_installdirs
 
 	# Add here commands to install the package into debian/wondershaper.
 	#$(MAKE) install DESTDIR=$(CURDIR)/debian/wondershaper
-	cp wshaper $(CURDIR)/debian/wondershaper/usr/sbin/wondershaper
+	cp wshaper $(CURDIR)/debian/wondershaper/sbin/wondershaper
 
 
 # Build architecture-independent files here.

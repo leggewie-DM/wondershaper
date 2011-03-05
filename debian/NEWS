@@ -1,7 +1,13 @@
 wondershaper (1.1a-4.1) unstable; urgency=low
 
- The wshaper command has been relocated from /sbin to /usr/sbin, in order
- to comply with Debian Policy. Please update any scripts you might have
- pointing to the old location.
+  The wondershaper command has been relocated from /usr/sbin to /sbin,
+  in order to comply with Debian Policy. Please update any scripts you 
+  might have pointing to the old location.
+  Policy considerations:
+  As a boot time network interface command, it belongs in the same 
+  place as /sbin/tc, iptables, etc.
+  From a dependency standpoint, its intended to be run from 
+  /etc/network/interfaces at boot time, so cannot be in a directory
+  that is theoretically NFS mountable.
 
- -- Margarita Manterola <marga@debian.org>  Thu, 30 Aug 2007 13:31:30 -0300
+ -- Vince Mulhollon <vlm@debian.org>  Fri, 04 Mar 2011 20:37:37 -0600
