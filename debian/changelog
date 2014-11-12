@@ -1,3 +1,17 @@
+wondershaper (1.1a-7) experimental; urgency=low
+
+  * control:
+    - add Vcs-* fields
+    - run-time depend on iproute2. LP: #1331306, Closes: #753738
+    - bump Debian Standard to 3.9.6
+  * rules: add recommended targets build-arch and build-indep
+  * patches: move changes to upstream into an explicit patch file
+  * move to DebSrc3.0. Closes: #600613
+  * move the build system to dh9
+  * separate upstream and Debian TODO
+
+ -- Rolf Leggewie <foss@rolf.leggewie.biz>  Wed, 12 Nov 2014 22:07:28 +0800
+
 wondershaper (1.1a-6) unstable; urgency=low
 
   * Added ${misc:Depends} to control 
