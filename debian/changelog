@@ -1,3 +1,9 @@
+wondershaper (1.1a-8) unstable; urgency=medium
+
+  * release to unstable
+
+ -- Rolf Leggewie <foss@rolf.leggewie.biz>  Mon, 11 May 2015 11:11:11 +0200
+
 wondershaper (1.1a-7) experimental; urgency=low
 
   * control:
