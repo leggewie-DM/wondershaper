@@ -1,3 +1,12 @@
+wondershaper (1.1a-9) unstable; urgency=medium
+
+  * control:
+    - update Debian Standard to 4.1.4
+    - move packaging VCS to github
+    - replace priority extra by priority optional
+
+ -- Rolf Leggewie <foss@rolf.leggewie.biz>  Mon, 16 Apr 2018 17:04:14 +0800
+
 wondershaper (1.1a-8) unstable; urgency=medium
 
   * release to unstable
