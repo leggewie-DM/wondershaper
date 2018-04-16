@@ -5,7 +5,7 @@ Homepage: http://lartc.org/wondershaper/
 Maintainer: Vince Mulhollon <vlm@debian.org>
 Uploaders: Rolf Leggewie <foss@rolf.leggewie.biz>
 Build-Depends: debhelper (>= 9)
-Standards-Version: 3.9.6
+Standards-Version: 4.1.4
 Vcs-Browser: http://git.debian.org/?p=collab-maint/wondershaper.git
 Vcs-Git: git://git.debian.org/collab-maint/wondershaper.git
 
