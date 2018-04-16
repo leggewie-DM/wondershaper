@@ -1,6 +1,6 @@
 Source: wondershaper
 Section: net
-Priority: extra
+Priority: optional
 Homepage: http://lartc.org/wondershaper/
 Maintainer: Vince Mulhollon <vlm@debian.org>
 Uploaders: Rolf Leggewie <foss@rolf.leggewie.biz>
