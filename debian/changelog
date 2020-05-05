@@ -1,3 +1,9 @@
+wondershaper (1.1a-10) UNRELEASED; urgency=medium
+
+  * Trim trailing whitespace.
+
+ -- Debian Janitor <janitor@jelmer.uk>  Tue, 05 May 2020 10:19:17 +0000
+
 wondershaper (1.1a-9) unstable; urgency=medium
 
   * control:
@@ -29,23 +35,23 @@ wondershaper (1.1a-7) experimental; urgency=low
 
 wondershaper (1.1a-6) unstable; urgency=low
 
-  * Added ${misc:Depends} to control 
+  * Added ${misc:Depends} to control
     This fixes lintian debhelper-but-no-misc-depends.
   * Upgraded dh compat from 4 to 8.  Updated control and compat to match.
     This fixes lintian package-uses-deprecated-debhelper-compat-version
   * Upgrade standards version from 3.8.0 to 3.9.1.0
-    This fixes lintian out-of-date-standards-version 
+    This fixes lintian out-of-date-standards-version
   * Fix copyright file.
     This fixes lintian copyright-without-copyright-notice
   * Changed from dh_clean -k to dh_prep
     This fixes lintian dh-clean-k-is-deprecated
   * The wondershaper command has been relocated from /usr/sbin to /sbin,
-    in order to comply with Debian Policy. Please update any scripts you 
+    in order to comply with Debian Policy. Please update any scripts you
     might have pointing to the old location.
     Policy considerations:
-    As a boot time network interface command, it belongs in the same 
+    As a boot time network interface command, it belongs in the same
     place as /sbin/tc, iptables, etc.
-    From a dependency standpoint, its intended to be run from 
+    From a dependency standpoint, its intended to be run from
     /etc/network/interfaces at boot time, so cannot be in a directory
     that is theoretically NFS mountable.
   * Mentined RTNETLINK errors resulting from CONFIG_NET_ACT_POLICE
@@ -53,10 +59,10 @@ wondershaper (1.1a-6) unstable; urgency=low
     (Closes: #395971)
   * Use full path when calling tc
     (Closes: #504583)
-  * Added some commentary to the Debian README explaining how to 
+  * Added some commentary to the Debian README explaining how to
     optionally optimize the results.
     (Closes: #592579)
- 
+
  -- Vince Mulhollon <vlm@debian.org>  Fri, 04 Mar 2011 20:37:37 -0600
 
 wondershaper (1.1a-5) unstable; urgency=low
@@ -85,7 +91,7 @@ wondershaper (1.1a-4.1) unstable; urgency=low
 
 wondershaper (1.1a-4) unstable; urgency=low
 
-  * Patched to remove the bash-isms, works with bash and dash 
+  * Patched to remove the bash-isms, works with bash and dash
     (Closes: #260641)
     (Closes: #254897)
   * Fixed the NOPRIOHOSTSRC bug
@@ -93,7 +99,7 @@ wondershaper (1.1a-4) unstable; urgency=low
     (Closes: #255347)
   * Nothing bad heard about the mldonkey patches.
     (Closes: #253627)
-  * Modified the README.Debian file to explain the kernel 
+  * Modified the README.Debian file to explain the kernel
     patch situation.
     (Closes: #261133)
 
@@ -120,4 +126,3 @@ wondershaper (1.1a-1) unstable; urgency=low
   * Initial Release.
 
  -- Vince Mulhollon <vlm@debian.org>  Sat,  1 May 2004 22:02:38 -0500
-
