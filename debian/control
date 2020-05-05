@@ -1,7 +1,7 @@
 Source: wondershaper
 Section: net
 Priority: optional
-Homepage: http://lartc.org/wondershaper/
+Homepage: https://lartc.org/wondershaper/
 Maintainer: Vince Mulhollon <vlm@debian.org>
 Uploaders: Rolf Leggewie <foss@rolf.leggewie.biz>
 Build-Depends: debhelper (>= 9)
