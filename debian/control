@@ -4,7 +4,7 @@ Priority: optional
 Homepage: https://lartc.org/wondershaper/
 Maintainer: Vince Mulhollon <vlm@debian.org>
 Uploaders: Rolf Leggewie <foss@rolf.leggewie.biz>
-Build-Depends: debhelper (>= 12~)
+Build-Depends: debhelper-compat (= 12)
 Standards-Version: 4.1.4
 Vcs-Browser: https://github.com/leggewie-DM/wondershaper
 Vcs-Git: https://github.com/leggewie-DM/wondershaper.git
