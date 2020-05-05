@@ -2,6 +2,7 @@ wondershaper (1.1a-10) UNRELEASED; urgency=medium
 
   * Trim trailing whitespace.
   * Use secure URI in Homepage field.
+  * Bump debhelper from deprecated 9 to 12.
 
  -- Debian Janitor <janitor@jelmer.uk>  Tue, 05 May 2020 10:19:17 +0000
 
