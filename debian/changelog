@@ -1,3 +1,10 @@
+wondershaper (1.1a-10) UNRELEASED; urgency=medium
+
+  * Apply multi-arch hints.
+    + wondershaper: Add Multi-Arch: foreign.
+
+ -- Debian Janitor <janitor@jelmer.uk>  Wed, 28 Oct 2020 14:43:56 -0000
+
 wondershaper (1.1a-9) unstable; urgency=medium
 
   * control:

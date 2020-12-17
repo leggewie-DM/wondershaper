@@ -12,6 +12,7 @@ Vcs-Git: https://github.com/leggewie-DM/wondershaper.git
 Package: wondershaper
 Architecture: all
 Depends: iproute2|iproute,${misc:Depends}
+Multi-Arch: foreign
 Description: Easy to use traffic shaping script
  An easy to use traffic shaping script that provides these improvements:
   * Low latency for interactive traffic (and pings) at all times
