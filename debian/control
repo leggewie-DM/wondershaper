@@ -1,11 +1,11 @@
 Source: wondershaper
 Section: net
 Priority: optional
-Homepage: http://lartc.org/wondershaper/
+Homepage: https://lartc.org/wondershaper/
 Maintainer: Vince Mulhollon <vlm@debian.org>
 Uploaders: Rolf Leggewie <foss@rolf.leggewie.biz>
-Build-Depends: debhelper (>= 9)
-Standards-Version: 4.1.4
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.1.5
 Vcs-Browser: https://github.com/leggewie-DM/wondershaper
 Vcs-Git: https://github.com/leggewie-DM/wondershaper.git
 
@@ -25,7 +25,7 @@ Description: Easy to use traffic shaping script
   * Interactive traffic skips the queue
   * ACKs and tiny packets skip the queue
  .
- Configuring the wondershaper requires you to accurately and precisely 
+ Configuring the wondershaper requires you to accurately and precisely
  determine your consistent upload and download speeds.
  .
  The wondershaper is the simplest, easiest to use, entry level, traffic
