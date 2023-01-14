@@ -25,7 +25,7 @@ Description: Easy to use traffic shaping script
   * Interactive traffic skips the queue
   * ACKs and tiny packets skip the queue
  .
- Configuring the wondershaper requires you to accurately and precisely 
+ Configuring the wondershaper requires you to accurately and precisely
  determine your consistent upload and download speeds.
  .
  The wondershaper is the simplest, easiest to use, entry level, traffic
